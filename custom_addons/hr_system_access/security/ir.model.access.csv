@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_system,access_hr_system,model_hr_system,base.group_user,1,0,0,0
+access_hr_system_account,access_hr_system_account,model_hr_system_account,base.group_user,1,0,0,0
+access_hr_system_account_access,access_hr_system_account_access,model_hr_system_account_access,base.group_user,1,0,0,0
+access_hr_system_account_tag,access_hr_system_account_tag,model_hr_system_account_tag,base.group_user,1,0,0,0
