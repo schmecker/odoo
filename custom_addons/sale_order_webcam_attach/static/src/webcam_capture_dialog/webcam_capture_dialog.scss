@@ -1,0 +1,13 @@
+.o_webcam_capture_dialog {
+    .o_webcam_preview_wrap {
+        min-height: 240px;
+        border-radius: 0.25rem;
+        overflow: hidden;
+
+        video,
+        img {
+            max-height: 60vh;
+            object-fit: contain;
+        }
+    }
+}

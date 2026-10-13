@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="sale_order_webcam_attach.WebcamCaptureDialog">
+        <Dialog size="'md'" title.translate="Zdjęcie z kamery">
+            <div class="o_webcam_capture_dialog">
+                <div t-if="state.error" class="alert alert-warning" t-esc="state.error"/>
+                <div t-if="state.cameras.length > 1" class="mb-2">
+                    <label class="form-label">Kamera</label>
+                    <select class="form-select" t-on-change="onCameraChange">
+                        <t t-foreach="state.cameras" t-as="camera" t-key="camera.deviceId">
+                            <option t-att-value="camera.deviceId" t-att-selected="camera.deviceId === state.deviceId">
+                                <t t-esc="camera.label or ('Kamera ' + (camera_index + 1))"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="o_webcam_preview_wrap position-relative bg-black text-center">
+                    <img t-if="state.preview" class="img-fluid" t-att-src="state.preview" alt="Podgląd zdjęcia"/>
+                    <video t-else="" t-ref="video" class="w-100" autoplay="autoplay" playsinline="playsinline" muted="muted"/>
+                    <canvas t-ref="canvas" class="d-none"/>
+                </div>
+            </div>
+            <t t-set-slot="footer">
+                <t t-if="state.preview">
+                    <button class="btn btn-primary" t-on-click="attach" t-att-disabled="state.saving">
+                        Załącz przy czacie
+                    </button>
+                    <button class="btn btn-secondary" t-on-click="retake" t-att-disabled="state.saving">
+                        Ponów
+                    </button>
+                </t>
+                <button t-else="" class="btn btn-primary" t-on-click="capture" t-att-disabled="state.error">
+                    Zrób zdjęcie
+                </button>
+                <button class="btn btn-secondary" t-on-click="cancel">Anuluj</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

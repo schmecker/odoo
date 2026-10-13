@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_system_access" model="ir.ui.view">
+        <field name="name">hr.employee.form.system.access</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="system_access" string="Dostępy do systemów" groups="hr.group_hr_user">
+                    <field name="system_access_ids" context="{'default_employee_id': id}">
+                        <list editable="bottom">
+                            <field name="employee_id" column_invisible="1"/>
+                            <field name="system_id"/>
+                            <field name="account_id"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="valid_from"/>
+                            <field name="valid_until"/>
+                            <field name="is_active"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
